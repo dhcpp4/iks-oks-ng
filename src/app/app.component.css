@@ -1,0 +1,13 @@
+div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 20rem;
+  height: 20rem;
+  justify-content: space-between;
+  margin: 0 auto;
+  border: 1rem solid crimson;
+}
+
+.clicked {
+  pointer-events: none;
+}
