@@ -8,6 +8,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 export class SquareComponent {
 
   @Input() position!: number;
+  @Input() whoClicked !: string;
   @Output() clicked = new EventEmitter<number>();
   isClicked: boolean = false;
 
