@@ -23,7 +23,7 @@ export class AppComponent {
     this.situation[position] = this.player;
     this.player = (this.player == 'X') ? 'O' : 'X';
     if (this.isGameOver()) {
-      console.log(`Game over! Player ${this.player} lost.`);
+      this.message = `Game over! Player ${this.player} lost.`;
     }
   }
 

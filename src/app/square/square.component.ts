@@ -10,10 +10,10 @@ export class SquareComponent {
   @Input() position!: number;
   @Input() whoClicked !: string;
   @Output() clicked = new EventEmitter<number>();
-  isClicked: boolean = false;
+  currentClasses = {};
 
   onClick() {
-    this.isClicked = true;
+    this.currentClasses = {[this.whoClicked] : true};
     this.clicked.emit(this.position);
   }
 

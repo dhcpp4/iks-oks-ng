@@ -15,6 +15,12 @@ div {
   height: 100%;
 }
 
-.clicked {
-  background-color: gray;
+.X {
+  background-color: blue;
+  pointer-events: none;
+}
+
+.O {
+  background-color: red;
+  pointer-events: none;
 }
