@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-square',
@@ -6,7 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./square.component.css']
 })
 export class SquareComponent {
-  onClick() {
 
+  @Input() position!: number;
+  @Input() whoClicked !: string;
+  @Output() clicked = new EventEmitter<number>();
+  currentClasses = {};
+
+  onClick() {
+    this.currentClasses = {[this.whoClicked] : true};
+    this.clicked.emit(this.position);
   }
+
 }

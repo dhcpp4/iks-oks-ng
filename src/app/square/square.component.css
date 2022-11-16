@@ -1,16 +1,26 @@
 :host {
+  display: block;
+  background-color: black;
   width: 33%;
   height: 33%;
 }
-div {
-  display: block;
-  background-color: black;
-  width: 100%;
-  height: 100%;
-}
-div:hover {
+:host:hover {
   cursor: pointer;
   background-color: cyan;
 }
 
+div {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 
+.X {
+  background-color: blue;
+  pointer-events: none;
+}
+
+.O {
+  background-color: red;
+  pointer-events: none;
+}

@@ -102,5 +102,7 @@
       }
     }
   },
-  "defaultProject": "iks-oks-ng"
+  "cli": {
+    "analytics": false
+  }
 }

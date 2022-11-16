@@ -9,9 +9,9 @@ export class AppComponent {
 
   title: string = "iks-oks-ng";
 
-  player: 1 | 2 = 1;
+  player: 'X' | 'O' = 'X';
 
-  situation: Array<0 | 1> = [
+  situation: Array<'X' | 'O' | 0> = [
     0, 0, 0,
     0, 0, 0,
     0, 0, 0
@@ -19,29 +19,27 @@ export class AppComponent {
 
   message : string = "";
 
-  currentClasses = {
-    clicked: false
-  };
-
-  onClick(e: Event) : void {
-    let square = e.target as HTMLElement;
-    this.currentClasses.clicked = true; //square.style.pointerEvents = "none";
-    this.situation[Number(square.id)] = 1;
-    this.isGameOver();
-  }
-
-  isGameOver() : void {
-    if (this.situation[0] && this.situation[1] && this.situation[2] ||
-        this.situation[3] && this.situation[4] && this.situation[5] ||
-        this.situation[6] && this.situation[7] && this.situation[8] ||
-        this.situation[0] && this.situation[3] && this.situation[6] ||
-        this.situation[1] && this.situation[4] && this.situation[7] ||
-        this.situation[2] && this.situation[5] && this.situation[8] ||
-        this.situation[0] && this.situation[4] && this.situation[8] ||
-        this.situation[2] && this.situation[4] && this.situation[6]) {
-      this.message = "Game Over";
+  changeSituation(position: number) {
+    this.situation[position] = this.player;
+    this.player = (this.player == 'X') ? 'O' : 'X';
+    if (this.isGameOver()) {
+      this.message = `Game over! Player ${this.player} lost.`;
     }
   }
 
+  isGameOver() : boolean {
+    let victoryCombinations: number[][] = [
+      [0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]
+    ];
 
+    return victoryCombinations.some(
+      el => {
+        let temp = this.indexByArray(this.situation, el);
+        return temp.every(e => e == 'X') || temp.every(e => e == 'O')
+      })
+  }
+
+  private indexByArray(arr: any[], ind: number[]) : any[] {
+    return ind.map(e => arr[e]);
+  }
 }
