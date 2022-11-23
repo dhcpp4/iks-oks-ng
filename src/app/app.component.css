@@ -7,3 +7,8 @@ div {
   margin: 0 auto;
   border: 1rem solid crimson;
 }
+
+.game-over {
+  pointer-events: none;
+  opacity: 0.2;
+}
